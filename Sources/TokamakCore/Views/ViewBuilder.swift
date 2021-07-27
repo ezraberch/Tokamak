@@ -30,6 +30,7 @@ public struct _ConditionalContent<TrueContent, FalseContent>: _PrimitiveView
     case falseContent(FalseContent)
   }
 
+  
   let storage: Storage
 }
 
