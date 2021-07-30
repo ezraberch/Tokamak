@@ -53,8 +53,20 @@ public extension View {
   }
 
   @inlinable
+  func foregroundStyle(_ style: _BuiltinStyle) -> some View
+  {
+    foregroundStyle(style, style, style)
+  }
+
+  @inlinable
   func foregroundStyle<S1, S2>(_ primary: S1, _ secondary: S2) -> some View
     where S1: ShapeStyle, S2: ShapeStyle
+  {
+    foregroundStyle(primary, secondary, secondary)
+  }
+
+  @inlinable
+  func foregroundStyle(_ primary: _BuiltinStyle, _ secondary: _BuiltinStyle) -> some View
   {
     foregroundStyle(primary, secondary, secondary)
   }
@@ -69,22 +81,31 @@ public extension View {
   {
     modifier(_ForegroundStyleModifier(primary: primary, secondary: secondary, tertiary: tertiary))
   }
+
+  @inlinable
+  func foregroundStyle(
+    _ primary: _BuiltinStyle,
+    _ secondary: _BuiltinStyle,
+    _ tertiary: _BuiltinStyle
+  ) -> some View
+  {
+    modifier(_ForegroundStyleModifier(primary: primary.style, secondary: secondary.style, tertiary: tertiary.style))
+  }
+
+  //TODO: Heterogenous overloads
 }
 
-@frozen public struct _ForegroundStyleModifier<
-  Primary, Secondary, Tertiary
->: ViewModifier, EnvironmentModifier
-  where Primary: ShapeStyle, Secondary: ShapeStyle, Tertiary: ShapeStyle
+@frozen public struct _ForegroundStyleModifier: ViewModifier, EnvironmentModifier
 {
-  public var primary: Primary
-  public var secondary: Secondary
-  public var tertiary: Tertiary
+  public var primary: ShapeStyle
+  public var secondary: ShapeStyle
+  public var tertiary: ShapeStyle
 
   @inlinable
   public init(
-    primary: Primary,
-    secondary: Secondary,
-    tertiary: Tertiary
+    primary: ShapeStyle,
+    secondary: ShapeStyle,
+    tertiary: ShapeStyle
   ) {
     (self.primary, self.secondary, self.tertiary) = (primary, secondary, tertiary)
   }

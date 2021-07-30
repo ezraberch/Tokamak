@@ -25,7 +25,7 @@ struct ShapeStyleDemo: View {
           Rectangle()
             .frame(width: 25, height: 25)
         }
-        .foregroundStyle(Color.red)
+        .foregroundStyle(.red)
         VStack {
           Text("Green Style")
           Rectangle()
@@ -37,7 +37,7 @@ struct ShapeStyleDemo: View {
           Rectangle()
             .frame(width: 25, height: 25)
         }
-        .foregroundStyle(Color.blue)
+        .foregroundStyle(.blue)
       }
       ZStack {
         HStack(spacing: 0) {
@@ -45,19 +45,19 @@ struct ShapeStyleDemo: View {
             .foregroundStyle(Color.red)
             .frame(width: 60, height: 100)
           Rectangle()
-            .foregroundStyle(Color.orange)
+            .foregroundStyle(.orange)
             .frame(width: 60, height: 100)
           Rectangle()
             .foregroundStyle(Color.yellow)
             .frame(width: 60, height: 100)
           Rectangle()
-            .foregroundStyle(Color.green)
+            .foregroundStyle(.green)
             .frame(width: 60, height: 100)
           Rectangle()
             .foregroundStyle(Color.blue)
             .frame(width: 60, height: 100)
           Rectangle()
-            .foregroundStyle(Color.purple)
+            .foregroundStyle(.purple)
             .frame(width: 60, height: 100)
         }
         VStack(spacing: 0) {
@@ -65,17 +65,17 @@ struct ShapeStyleDemo: View {
             Text("Ultra Thin")
             Spacer()
           }
-          .background(Material.ultraThin)
+          .background(.ultraThinMaterial)
           HStack {
             Text("Thin")
             Spacer()
           }
-          .background(Material.thin)
+          .background(Material.thinMaterial)
           HStack {
             Text("Regular")
             Spacer()
           }
-          .background(Material.regular)
+          .background(.regularMaterial)
           HStack {
             Text("Thick")
             Spacer()

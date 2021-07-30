@@ -54,17 +54,21 @@ public extension View {
   func background<S>(_ style: S) -> some View where S: ShapeStyle {
     modifier(_BackgroundStyleModifier(style: style))
   }
-}
-
-@frozen public struct _BackgroundStyleModifier<Style>: ViewModifier, EnvironmentModifier,
-  EnvironmentReader
-  where Style: ShapeStyle
-{
-  public var environment: EnvironmentValues!
-  public var style: Style
 
   @inlinable
-  public init(style: Style) {
+  func background(_ style: _BuiltinStyle) -> some View {
+    modifier(_BackgroundStyleModifier(style: style.style))
+  }
+}
+
+@frozen public struct _BackgroundStyleModifier: ViewModifier, EnvironmentModifier,
+  EnvironmentReader
+{
+  public var environment: EnvironmentValues!
+  public var style: ShapeStyle
+
+  @inlinable
+  public init(style: ShapeStyle) {
     self.style = style
   }
 
