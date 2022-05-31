@@ -17,7 +17,8 @@ jobs:
       - name: Check binary size
         shell: bash
         run: |
-          stat -f "::warning file=Package.swift,line=1,col=1::Wasm bundle is %z bytes." Bundle/main.wasm
+          ls -la Bundle
+          stat --format="::warning file=Package.swift,line=1,col=1::Wasm bundle is %z bytes." Bundle/main.wasm
 
   swiftwasm_test_5_6:
     runs-on: ubuntu-20.04
